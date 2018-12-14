@@ -1,22 +1,4 @@
-# rxjs-practice
+# rxjs practice
 
-## operators
-
-https://blog.miniasp.com/post/2018/09/06/Clarify-some-confused-RxJS-operators.aspx
-
-* Creation Operator
-  * create
-  * of
-  * from
-  * fromEvent
-  * never
-  * empty
-  * throw
-  * interval
-  * timer
-* Transformation Operator
-  * map
-  * mapTo
-  * filter
-  * concatAll
-
+三大核心(operators / subject / schedule)
+两个基本点(observable / observer)
