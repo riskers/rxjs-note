@@ -1,3 +1,16 @@
+> 两个内容:
+> Cold Observable 和 Hot Observable 的概念
+> 引出**多播**的概念
+> 在引出 Subject 简单的实现多播
+
+## Cold Observable 的问题
+* [证明 cold obverable 无法多播](https://stackblitz.com/edit/rxjs-jzb8d8)
+
+## Subject
+* [证明 Subject 可以实现多播](https://stackblitz.com/edit/rxjs-g62yrj)
+* [Subject 实现的多播](https://stackblitz.com/edit/rxjs-jzb8d8)
+* [share 实现的多播](https://stackblitz.com/edit/rxjs-3nhqpt)
+
 subject: [stackblitz](https://stackblitz.com/edit/rxjs-tm5sj9?embed=1&file=index.ts)
 
 * Subject 同時是 Observable 又是 Observer [stackblitz](https://stackblitz.com/edit/rxjs-coom7d?file=index.ts)
