@@ -1,26 +1,20 @@
+******
+
 > 两个内容:
 > Cold Observable 和 Hot Observable 的概念
 > 引出**多播**的概念
 > 在引出 Subject 简单的实现多播
 
+******
+
 # Subject
 
 首先确定，Subject 就是让我们实现多播的。
-
-## Cold Observable 的问题
-* [证明 cold obverable 无法多播](https://stackblitz.com/edit/rxjs-jzb8d8)
-
-## Subject
-* [证明 Subject 可以实现多播](https://stackblitz.com/edit/rxjs-g62yrj)
-* [Subject 实现的多播](https://stackblitz.com/edit/rxjs-jzb8d8)
-* [share 实现的多播](https://stackblitz.com/edit/rxjs-3nhqpt)
 
 subject: [stackblitz](https://stackblitz.com/edit/rxjs-tm5sj9?embed=1&file=index.ts)
 
 * Subject 同時是 Observable 又是 Observer [stackblitz](https://stackblitz.com/edit/rxjs-coom7d?file=index.ts)
 * Subject 會對內部的 observers 清單進行組播(multicast)
-
------
 
 Subject 既是 Observable ，又是 Observer
 
@@ -34,7 +28,17 @@ Subject 充当代理和桥梁的作用，正因为如此，才只有一个执行
 * 当需要决定观察者迟来时该怎么做，是否使用 ReplaySubject、BehaviorSubject？
 * 需要完全控制 next()、error() 和 completed() 方法。
 
------
+## Cold Observable 的问题
+* [证明 cold obverable 无法多播](https://stackblitz.com/edit/rxjs-jzb8d8)
+
+## 多播
+* [证明 Subject 可以实现多播](https://stackblitz.com/edit/rxjs-g62yrj)
+
+* [Subject 实现的多播](https://stackblitz.com/edit/rxjs-jzb8d8)
+
+## subject 不能重复使用
+
+[stackblitz](https://stackblitz.com/edit/rxjs-3gkwka)
 
 很多人會直接把這個特性拿來用在 不知道如何建立 Observable 的狀況:
 
@@ -61,7 +65,7 @@ class MyButton extends React.Component {
 因為在 React API 的關係，如果我們想要把 React Event 轉乘 observable 就可以用 Subject 幫我們做到這件事；但絕大多數的情況我們是可以透過 Observable.create 來做到這件事，像下面這樣
 
 ```js
-const example = Rx.Observable.creator(observer => {
+const example = Rx.Observable.create(observer => {
     const source = getSomeSource(); // 某個資料源
     source.addListener('some', (some) => {
         observer.next(some)
@@ -73,13 +77,17 @@ const example = Rx.Observable.creator(observer => {
 
 ## BehaviorSubject
 
+很多時候希望 Subject 能代表當下的状态，也就是說如果今天有一個新的 subscribe，我們希望 Subject 能立即給出最新的值，而不是沒有值:
+
 [stackblitz](https://stackblitz.com/edit/rxjs-okmhrl?embed=1&file=index.ts)
 
 ## ReplaySubject
 
+希望 Subject 代表事件，但又能在新 subscribe 时重新发送最后的几個元素
+
 [stackblitz](https://stackblitz.com/edit/rxjs-jwa7n9?embed=1&file=index.ts)
 
-可能會有人以為 ReplaySubject(1) 是不是就等同於 BehaviorSubject，其實是不一樣的，BehaviorSubject 在建立時就會有起始值，比如 BehaviorSubject(0) 起始值就是 0，BehaviorSubject 是代表著狀態而 ReplaySubject 只是事件的重放而已
+> 可能會有人以為 ReplaySubject(1) 是不是就等同於 BehaviorSubject，其實是不一樣的，BehaviorSubject 在建立時就會有起始值，比如 BehaviorSubject(0) 起始值就是 0，BehaviorSubject 是代表著狀態而 ReplaySubject 只是事件的重放而已
 
 ## AsyncSubject
 
@@ -87,6 +95,94 @@ const example = Rx.Observable.creator(observer => {
 
 不常用
 
-## multicast
+## 多播操作符
+
+### multicast
+
+refCount: 建立自动 connect 的 Observable
 
 [stackblitz](https://stackblitz.com/edit/rxjs-afv7vh)
+
+[multicast operator 实现的多播](https://stackblitz.com/edit/rxjs-3aaggb)
+
+### publish
+
+`multicast` 的简写:
+
+```js
+var source = interval(1000).pipe(
+    publish(),
+    refCount()
+)
+
+/* var source = interval(1000).pipe(
+    multicast(new Rx.Subject()),
+    refCount()
+) */
+```
+
+变体:
+
+* publishBehavior
+
+    ```js
+    var source = interval(1000).pipe(
+        publishBehavior(0),
+        refCount()
+    )
+
+    /* var source = interval(1000).pipe(
+        multicast(new Rx.BehaviorSubject(0)),
+        refCount()
+    ) */
+    ```
+
+* publishReplay
+
+    ```js
+    var source = interval(1000).pipe(
+        publishReplay(1),
+        refCount()
+    )
+
+    /* var source = interval(1000).pipe(
+        multicast(new Rx.ReplaySubject(1)),
+        refCount()
+    ) */
+    ```
+
+* publishLast
+
+    ```js
+    var source = interval(1000).pipe(
+        publishLast(),
+        refCount()
+    )
+
+    /* var source = interval(1000).pipe(
+        multicast(new Rx.AsyncSubject(1)),
+        refCount()
+    ) */
+    ```
+
+### share
+
+`publish` + `refCount` 的简写:
+
+```js
+var source - interval(1000).pipe(
+    share(),
+)
+
+/* var source = interval(1000).pipe(
+    publish(),
+    refCount()
+) */
+
+/* var source = interval(1000).pipe(
+    multicast(new Rx.Subject()),
+    refCount()
+) */
+```
+
+[share operator 实现的多播](https://stackblitz.com/edit/rxjs-3nhqpt)
