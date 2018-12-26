@@ -3,6 +3,10 @@
 > 引出**多播**的概念
 > 在引出 Subject 简单的实现多播
 
+# Subject
+
+首先确定，Subject 就是让我们实现多播的。
+
 ## Cold Observable 的问题
 * [证明 cold obverable 无法多播](https://stackblitz.com/edit/rxjs-jzb8d8)
 
