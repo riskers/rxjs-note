@@ -450,7 +450,7 @@ a$.subscribe(v => console.log('B', v))
     * fromEvent
     * interval
     * timer
-* 实例方法 
+* 实例方法
 
 ## Scheduler
 

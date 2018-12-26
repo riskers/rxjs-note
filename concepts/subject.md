@@ -91,9 +91,10 @@ const example = Rx.Observable.create(observer => {
 
 ## AsyncSubject
 
+AsyncSubject 会在 subject 结束后送出最后一個值，其实这个行为跟 Promise 很像，都是等到事情结束后送出一個值，但实际上我們非常非常少用到 AsyncSubject，絕大部分的時候都是使用 BehaviorSubject 跟 ReplaySubject 或 Subject。
+
 [stackblitz](https://stackblitz.com/edit/rxjs-hweoev?embed=1&file=index.ts)
 
-不常用
 
 ## 多播操作符
 
