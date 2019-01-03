@@ -14,7 +14,7 @@ Subject 充当代理和桥梁的作用，正因为如此，才只有一个执行
 
 ## Cold Observable 的问题
 
-cold ovservable 是无法多播的，因为数据不同步: [stackblitz](https://stackblitz.com/edit/rxjs-jzb8d8)
+cold ovservable 是无法多播的，因为数据不同步: [stackblitz](https://stackblitz.com/edit/rxjs-rjua2a)
 
 ## 多播
 
