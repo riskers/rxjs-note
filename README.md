@@ -1,6 +1,6 @@
 # rxjs note
 
-目前 rxjs 最新版本是 v6，v4 之前的仓库是 https://github.com/Reactive-Extensions/RxJS，v5 迁移到了 https://github.com/ReactiveX/rxjs。
+目前 rxjs 最新版本是 v6，v4 之前的仓库是 https://github.com/Reactive-Extensions/RxJS， v5 迁移到了 https://github.com/ReactiveX/rxjs。
 
 ## rxjs 的优势
 
