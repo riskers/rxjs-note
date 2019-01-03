@@ -2,8 +2,6 @@
 
 `Observable` 是一个可以推送多个值的惰性集合。
 
-### Pull VS Push && 单值 VS 多值
-
 |  | 单个值 | 多个值 |
 | :---- | :---- | :---- |
 | 拉取 | Function | Iterator |
