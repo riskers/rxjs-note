@@ -64,13 +64,13 @@ const example = Observable.create(observer => {
 
 很多時候希望 Subject 能代表當下的状态，也就是說如果今天有一個新的 subscribe，我們希望 Subject 能立即給出最新的值，而不是沒有值:
 
-[stackblitz](https://stackblitz.com/edit/rxjs-okmhrl?embed=1&file=index.ts)
+[stackblitz](https://stackblitz.com/edit/rxjs-okmhrl)
 
 ## ReplaySubject
 
 希望 Subject 代表事件，但又能在新 subscribe 时重新发送最后的几個元素
 
-[stackblitz](https://stackblitz.com/edit/rxjs-jwa7n9?embed=1&file=index.ts)
+[stackblitz](https://stackblitz.com/edit/rxjs-jwa7n9)
 
 > 可能會有人以為 ReplaySubject(1) 是不是就等同於 BehaviorSubject，其實是不一樣的，BehaviorSubject 在建立時就會有起始值，比如 BehaviorSubject(0) 起始值就是 0，BehaviorSubject 是代表著狀態而 ReplaySubject 只是事件的重放而已
 
@@ -78,7 +78,7 @@ const example = Observable.create(observer => {
 
 AsyncSubject 会在 subject 结束后送出最后一個值，其实这个行为跟 Promise 很像，都是等到事情结束后送出一個值，但实际上我們非常非常少用到 AsyncSubject，絕大部分的時候都是使用 BehaviorSubject 跟 ReplaySubject 或 Subject。
 
-[stackblitz](https://stackblitz.com/edit/rxjs-hweoev?embed=1&file=index.ts)
+[stackblitz](https://stackblitz.com/edit/rxjs-hweoev)
 
 
 ## 多播操作符
