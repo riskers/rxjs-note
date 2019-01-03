@@ -1,46 +1,29 @@
-******
+## Subject
 
-> 两个内容:
-> Cold Observable 和 Hot Observable 的概念
-> 引出**多播**的概念
-> 在引出 Subject 简单的实现多播
+首先确定一个概念，**Subject 即是 Observable 也是 Observer**:
 
-******
+[stackblitz](https://stackblitz.com/edit/rxjs-tm5sj9)
 
-# Subject
+Subject 充当代理和桥梁的作用，正因为如此，才只有一个执行。从 `interval$` Observable 那得到一个新值，然后我将这个值传递给我的所有观察者 (监听者)。
 
-首先确定，Subject 就是让我们实现多播的。
-
-subject: [stackblitz](https://stackblitz.com/edit/rxjs-tm5sj9?embed=1&file=index.ts)
-
-* Subject 同時是 Observable 又是 Observer [stackblitz](https://stackblitz.com/edit/rxjs-coom7d?file=index.ts)
-* Subject 會對內部的 observers 清單進行組播(multicast)
-
-Subject 既是 Observable ，又是 Observer
-
-Subject 充当代理和桥梁的作用，正因为如此，才只有一个执行。从 `interval$` Observable 那得到一个新值，然后我将这个值传递给我的所有观察者 (监听者)
-
-[subject demo](https://jsbin.com/nuciruzexe/edit?js,console,output)
-
-何时使用 Subject:
+<!-- 何时使用 Subject:
 
 * 需要共享相同的 observable 执行。
 * 当需要决定观察者迟来时该怎么做，是否使用 ReplaySubject、BehaviorSubject？
-* 需要完全控制 next()、error() 和 completed() 方法。
+* 需要完全控制 next()、error() 和 completed() 方法。 -->
 
 ## Cold Observable 的问题
 * [证明 cold obverable 无法多播](https://stackblitz.com/edit/rxjs-jzb8d8)
 
 ## 多播
 * [证明 Subject 可以实现多播](https://stackblitz.com/edit/rxjs-g62yrj)
-
 * [Subject 实现的多播](https://stackblitz.com/edit/rxjs-jzb8d8)
 
 ## subject 不能重复使用
 
 [stackblitz](https://stackblitz.com/edit/rxjs-3gkwka)
 
-很多人會直接把這個特性拿來用在 不知道如何建立 Observable 的狀況:
+很多人會直接把這個特性拿來用在不知道如何建立 Observable 的狀況:
 
 ```js
 class MyButton extends React.Component {
@@ -62,11 +45,13 @@ class MyButton extends React.Component {
 }
 ```
 
-因為在 React API 的關係，如果我們想要把 React Event 轉乘 observable 就可以用 Subject 幫我們做到這件事；但絕大多數的情況我們是可以透過 Observable.create 來做到這件事，像下面這樣
+因为 React API 的关系，如果我們想要把 React Event 转换成 observable 就可以用 Subject 幫我們做到這件事；但绝大多数的情況我們是可以透過 `Observable.create` 來做到這件事，像下面这样:
 
 ```js
-const example = Rx.Observable.create(observer => {
-    const source = getSomeSource(); // 某個資料源
+import { Observable } from 'rxjs'
+
+const example = Observable.create(observer => {
+    const source = getSomeSource(); // 某個数据源
     source.addListener('some', (some) => {
         observer.next(some)
     })
@@ -116,6 +101,7 @@ var source = interval(1000).pipe(
     refCount()
 )
 
+// 等同于:
 /* var source = interval(1000).pipe(
     multicast(new Rx.Subject()),
     refCount()
@@ -132,6 +118,7 @@ var source = interval(1000).pipe(
         refCount()
     )
 
+    // 等同于:
     /* var source = interval(1000).pipe(
         multicast(new Rx.BehaviorSubject(0)),
         refCount()
@@ -146,6 +133,7 @@ var source = interval(1000).pipe(
         refCount()
     )
 
+    // 等同于:
     /* var source = interval(1000).pipe(
         multicast(new Rx.ReplaySubject(1)),
         refCount()
@@ -160,6 +148,7 @@ var source = interval(1000).pipe(
         refCount()
     )
 
+    // 等同于:
     /* var source = interval(1000).pipe(
         multicast(new Rx.AsyncSubject(1)),
         refCount()
