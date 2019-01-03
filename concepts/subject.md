@@ -13,11 +13,14 @@ Subject 充当代理和桥梁的作用，正因为如此，才只有一个执行
 * 需要完全控制 next()、error() 和 completed() 方法。 -->
 
 ## Cold Observable 的问题
-* [证明 cold obverable 无法多播](https://stackblitz.com/edit/rxjs-jzb8d8)
+
+cold ovservable 是无法多播的，因为数据不同步: [stackblitz](https://stackblitz.com/edit/rxjs-jzb8d8)
 
 ## 多播
-* [证明 Subject 可以实现多播](https://stackblitz.com/edit/rxjs-g62yrj)
-* [Subject 实现的多播](https://stackblitz.com/edit/rxjs-jzb8d8)
+
+而将 cold -> hot 后，就可以多播了: [stackblitz](https://stackblitz.com/edit/rxjs-g62yrj)
+
+[Subject 实现的多播](https://stackblitz.com/edit/rxjs-jzb8d8)
 
 ## subject 不能重复使用
 
