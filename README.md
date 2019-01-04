@@ -14,10 +14,9 @@ rxjs 的重点是 `observable` 和 `observer`，核心知识有 `operators`、`s
 * 概念
   * [observable](./concepts/observable.md)
   * [observer](./concepts/observer.md)
-  * operators
   * [subject](./concepts/subject.md)
+  * operators
   * schedule
-* 操作符
 * 与框架的结合
   * React
   * Angular
