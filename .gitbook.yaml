@@ -1,7 +1,5 @@
 root: .
 
-# Files to use as SUMMARY/README.
-# (Relative to <root> directory)
 structure:
   readme:  README.md
   summary: SUMMARY.md
