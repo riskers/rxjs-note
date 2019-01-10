@@ -7,7 +7,6 @@
     "search-pro",
     "-sharing",
     "disqus",
-    "github",
     "github-buttons",
     "editlink",
     "ga",
@@ -32,9 +31,6 @@
     },
     "disqus": {
       "shortName": "rxjs-notebook"
-    },
-    "github": {
-      "url": "https://github.com/riskers/rxjs-note"
     },
     "github-buttons": {
       "buttons": [{
