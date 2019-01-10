@@ -22,11 +22,6 @@
     "expandable-chapters-small",
     "donate"
   ],
-  "links" : {
-    "sidebar" : {
-      "Home" : "https://github.com/riskers/rxjs-note/"
-    }
-  },
   "pluginsConfig": {
     "search-pro": {
       "cutWordLib": "nodejieba",
