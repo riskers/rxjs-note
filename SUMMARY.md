@@ -10,7 +10,7 @@
 
 ### 操作符
 
-* [详解](./operators/README.md)
+* [概览](./operators/README.md)
 
 ### 与框架的结合
 
