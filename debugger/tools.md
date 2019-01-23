@@ -2,7 +2,7 @@
 * [rxfiddle](http://rxfiddle.net/#code=&type=editor)
 * https://jaredforsyth.com/rxvision/
 * https://rxviz.com/
-* https://reactive.how/
+* [reactive.how](https://reactive.how/)
 
 ## marbles 图怎么画
 
