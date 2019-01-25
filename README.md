@@ -10,3 +10,5 @@
 ## 学习笔记
 
 rxjs 的重点是 `observable` 和 `observer`，核心知识有 `operators`、`subject` 和 `schedule`。这里是我在学习 rxjs 时记录的概念和有趣的 demo。
+
+> 本书发布在 https://riskers.github.io/rxjs-note/ ，感谢 github pages / gitbook / travis 提供的便利。
