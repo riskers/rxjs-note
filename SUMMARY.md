@@ -6,7 +6,7 @@
 - [observer](./concepts/observer.md)
 - [subject](./concepts/subject.md)
 - [operators](./concepts/operators.md)
-- [schedule](./concepts/schedule.md)
+- [schedulers](./concepts/schedulers.md)
 
 ### 操作符
 

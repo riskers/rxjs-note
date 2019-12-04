@@ -4,7 +4,7 @@
 
 [stackblitz](https://stackblitz.com/edit/rxjs-tm5sj9)
 
-Subject 充当代理和桥梁的作用，正因为如此，才只有一个执行。从 `interval$` Observable 那得到一个新值，然后我将这个值传递给我的所有观察者 (监听者)。
+> subject 在收到 $source 新消息时，会通知内部所有观察者(observerA 、observerB)
 
 <!-- 何时使用 Subject:
 
