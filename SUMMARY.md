@@ -26,3 +26,4 @@
 
 - [box-drag-and-move](./demos/box-drag-and-move.md)
 - [race-request](./demos/race.md)
+- [eggs](./demos/eggs.md)
