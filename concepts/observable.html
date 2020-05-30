@@ -1,0 +1,603 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>observable · rxjs6+ 笔记</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="riskers">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-disqus/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-solarizedlight.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-bibtex-indexed-cite/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="observer.html" />
+    
+    
+    <link rel="prev" href="../" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"riskers","repo":"rxjs-note","type":"star","size":"small","count":true}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    关于
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">概念</li>
+        
+        
+    
+        <li class="chapter active" data-level="2.1" data-path="observable.html">
+            
+                <a href="observable.html">
+            
+                    
+                    observable
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="observer.html">
+            
+                <a href="observer.html">
+            
+                    
+                    observer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="subject.html">
+            
+                <a href="subject.html">
+            
+                    
+                    subject
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="operators.html">
+            
+                <a href="operators.html">
+            
+                    
+                    operators
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="schedulers.html">
+            
+                <a href="schedulers.html">
+            
+                    
+                    schedulers
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">操作符</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../operators/">
+            
+                <a href="../operators/">
+            
+                    
+                    概览
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">与框架的结合</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../frameworks/rxjs-with-React/">
+            
+                <a href="../frameworks/rxjs-with-React/">
+            
+                    
+                    React
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../frameworks/rxjs-with-Angular/">
+            
+                <a href="../frameworks/rxjs-with-Angular/">
+            
+                    
+                    Angular
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">调试</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../debugger/tools.html">
+            
+                <a href="../debugger/tools.html">
+            
+                    
+                    工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../debugger/test.html">
+            
+                <a href="../debugger/test.html">
+            
+                    
+                    测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">demos</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../demos/box-drag-and-move.html">
+            
+                <a href="../demos/box-drag-and-move.html">
+            
+                    
+                    box-drag-and-move
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../demos/race.html">
+            
+                <a href="../demos/race.html">
+            
+                    
+                    race-request
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="../demos/eggs.html">
+            
+                <a href="../demos/eggs.html">
+            
+                    
+                    eggs
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >observable</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><ul><li><span class="title-icon "></span><a href="#observable"><b></b>Observable</a></li><ul><li><span class="title-icon "></span><a href="#function"><b></b>Function</a></li><li><span class="title-icon "></span><a href="#iterator"><b></b>Iterator</a></li><li><span class="title-icon "></span><a href="#promise"><b></b>Promise</a></li><li><span class="title-icon "></span><a href="#observable_1"><b></b>Observable</a></li></ul></ul></ul></div><a href="#" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h2 id="observable"><a name="observable" class="anchor-navigation-ex-anchor" href="#observable"><i class="fa fa-link" aria-hidden="true"></i></a>Observable</h2>
+<p><code>Observable</code> &#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x63A8;&#x9001;&#x591A;&#x4E2A;&#x503C;&#x7684;&#x60F0;&#x6027;&#x96C6;&#x5408;&#x3002;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">&#x5355;&#x4E2A;&#x503C;</th>
+<th style="text-align:left">&#x591A;&#x4E2A;&#x503C;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#x62C9;&#x53D6;</td>
+<td style="text-align:left">Function</td>
+<td style="text-align:left">Iterator</td>
+</tr>
+<tr>
+<td style="text-align:left">&#x63A8;&#x9001;</td>
+<td style="text-align:left">Promise</td>
+<td style="text-align:left">Observable</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x62C9;&#x53D6; VS &#x63A8;&#x9001;<ul>
+<li>&#x6240;&#x8C13;&#x300E;&#x62C9;&#x53D6;&#x300F;&#xFF0C;&#x5C31;&#x662F;<strong>&#x751F;&#x4EA7;&#x8005;&#x88AB;&#x8BF7;&#x6C42;&#x65F6;&#x4EA7;&#x751F;&#x6570;&#x636E;&#xFF0C;&#x6D88;&#x8D39;&#x8005;&#x51B3;&#x5B9A;&#x4F55;&#x65F6;&#x8BF7;&#x6C42;&#x6570;&#x636E;</strong>: &#x5728;&#x62C9;&#x53D6;&#x4F53;&#x7CFB;&#x4E2D;&#xFF0C;&#x7531;&#x6D88;&#x8D39;&#x8005;&#x6765;&#x51B3;&#x5B9A;&#x4F55;&#x65F6;&#x4ECE;&#x751F;&#x4EA7;&#x8005;&#x90A3;&#x91CC;&#x63A5;&#x6536;&#x6570;&#x636E;&#xFF0C;&#x751F;&#x4EA7;&#x8005;&#x672C;&#x8EAB;&#x4E0D;&#x77E5;&#x9053;&#x6570;&#x636E;&#x662F;&#x4F55;&#x65F6;&#x4EA4;&#x4ED8;&#x5230;&#x6D88;&#x8D39;&#x8005;&#x624B;&#x4E2D;&#x7684;</li>
+<li>&#x6240;&#x8C13;&#x300E;&#x63A8;&#x9001;&#x300F;&#xFF0C;&#x5C31;&#x662F;<strong>&#x751F;&#x4EA7;&#x8005;&#x6309;&#x81EA;&#x5DF1;&#x7684;&#x8282;&#x594F;&#x4EA7;&#x751F;&#x6570;&#x636E;&#xFF0C;&#x6D88;&#x8D39;&#x8005;&#x5BF9;&#x6536;&#x5230;&#x7684;&#x6570;&#x636E;&#x505A;&#x51FA;&#x53CD;&#x5E94;</strong>: &#x5728;&#x63A8;&#x9001;&#x4F53;&#x7CFB;&#x4E2D;&#xFF0C;&#x7531;&#x751F;&#x4EA7;&#x8005;&#x6765;&#x51B3;&#x5B9A;&#x4F55;&#x65F6;&#x628A;&#x6570;&#x636E;&#x53D1;&#x9001;&#x7ED9;&#x6D88;&#x8D39;&#x8005;&#x3002;&#x6D88;&#x8D39;&#x8005;&#x672C;&#x8EAB;&#x4E0D;&#x77E5;&#x9053;&#x4F55;&#x65F6;&#x4F1A;&#x63A5;&#x6536;&#x5230;&#x6570;&#x636E;</li>
+</ul>
+</li>
+<li>&#x5355;&#x503C; VS &#x591A;&#x503C;<ul>
+<li>&#x6240;&#x8C13;&#x5355;&#x503C;&#xFF0C;&#x5C31;&#x662F;<strong>&#x53EA;&#x80FD;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x503C;</strong></li>
+<li>&#x6240;&#x8C13;&#x591A;&#x503C;&#xFF0C;&#x5C31;&#x662F;<strong>&#x53EF;&#x4EE5;&#x968F;&#x7740;&#x65F6;&#x95F4;&#x7684;&#x63A8;&#x79FB;&#x201C;&#x8FD4;&#x56DE;&#x201D;&#x591A;&#x4E2A;&#x503C;</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="function"><a name="function" class="anchor-navigation-ex-anchor" href="#function"><i class="fa fa-link" aria-hidden="true"></i></a>Function</h3>
+<blockquote>
+<p>&#x5355;&#x503C; + &#x62C9;&#x53D6;</p>
+</blockquote>
+<pre class="language-"><code class="lang-js"><span class="token comment">/*
+ * &#x51FD;&#x6570;&#x58F0;&#x660E;&#x5C31;&#x662F;&#x751F;&#x4EA7;&#x8005;&#xFF0C;&#x4EA7;&#x751F;&#x6570;&#x636E;
+ * &#x51FD;&#x6570;&#x8C03;&#x7528;&#x5C31;&#x662F;&#x6D88;&#x8D39;&#x8005;&#xFF0C;&#x6D88;&#x8D39;&#x6570;&#x636E;
+ */</span>
+
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token number">42</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// &#x53EA;&#x80FD;&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x503C;&#xFF0C;&#x6C38;&#x8FDC;&#x4E0D;&#x4F1A;&#x662F;&#x7B2C;&#x4E8C;&#x4E2A;&#x503C;</span>
+</code></pre>
+<h3 id="iterator"><a name="iterator" class="anchor-navigation-ex-anchor" href="#iterator"><i class="fa fa-link" aria-hidden="true"></i></a>Iterator</h3>
+<blockquote>
+<p>&#x591A;&#x503C; + &#x62C9;&#x53D6;</p>
+</blockquote>
+<pre class="language-"><code class="lang-js"><span class="token comment">/*
+ * iter &#x5C31;&#x662F;&#x751F;&#x4EA7;&#x8005;
+ * next() &#x662F;&#x6D88;&#x8D39;&#x8005;&#xFF0C;&#x51B3;&#x5B9A;&#x4E86;&#x4F55;&#x65F6;&#x6D88;&#x8D39;
+ */</span>
+
+<span class="token keyword">let</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&apos;a&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;b&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;c&apos;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> iter <span class="token operator">=</span> arr<span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>iterator<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// &#x6BCF;&#x4E00;&#x6B21; next() &#x8C03;&#x7528;&#x5F97;&#x5230;&#x7684;&#x503C;&#x90FD;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x6240;&#x4EE5;&#x662F;&#x591A;&#x503C;</span>
+iter<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// { value: &apos;a&apos;, done: false }</span>
+iter<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// { value: &apos;b&apos;, done: false }</span>
+iter<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// { value: &apos;c&apos;, done: false }</span>
+iter<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// { value: undefined, done: true }</span>
+</code></pre>
+<h3 id="promise"><a name="promise" class="anchor-navigation-ex-anchor" href="#promise"><i class="fa fa-link" aria-hidden="true"></i></a>Promise</h3>
+<blockquote>
+<p>&#x5355;&#x503C; + &#x63A8;&#x9001;</p>
+</blockquote>
+<pre class="language-"><code class="lang-js"><span class="token comment">// &#x5B8C;&#x5168;&#x7531; Promise &#x5BF9;&#x8C61;&#x63A7;&#x5236;&#x4F55;&#x65F6;&#x53D1;&#x9001;&#x6570;&#x636E;: then()</span>
+<span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...  // &#x53EA;&#x80FD;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x503C;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="observable_1"><a name="observable_1" class="anchor-navigation-ex-anchor" href="#observable_1"><i class="fa fa-link" aria-hidden="true"></i></a>Observable</h3>
+<blockquote>
+<p>&#x591A;&#x503C; + &#x63A8;&#x9001;</p>
+</blockquote>
+<p>&#x5BF9;&#x4E8E; Observable &#x6765;&#x8BF4;&#x8FD9;&#x4E2A;&#x53CD;&#x5E94;&#x662F; <code>subscribe</code></p>
+<pre class="language-"><code class="lang-js"><span class="token comment">// &#x5B8C;&#x5168;&#x7531; Observable &#x5BF9;&#x8C61;&#x63A7;&#x5236;&#x4F55;&#x65F6;&#x53D1;&#x9001;&#x6570;&#x636E;: subscribe</span>
+<span class="token keyword">const</span> observable$ <span class="token operator">=</span> Observable<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token parameter">observer</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+  <span class="token comment">// &#x6BCF;&#x4E00;&#x6B21; next() &#x8F93;&#x51FA;&#x7684;&#x503C;&#x90FD;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x6240;&#x4EE5;&#x662F;&#x591A;&#x503C;</span>
+  observer<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">&apos;hi&apos;</span><span class="token punctuation">)</span>
+  observer<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">&apos;riskers&apos;</span><span class="token punctuation">)</span>
+  observer<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">&apos;hello world&apos;</span><span class="token punctuation">)</span>
+
+  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    observer<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">&apos;ee&apos;</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">2000</span><span class="token punctuation">)</span>
+
+  observer<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">&apos;last&apos;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+observable$<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token function-variable function">next</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">error</span><span class="token operator">:</span> <span class="token parameter">err</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">complete</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;complete&apos;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> By <a href="https://github.com/riskers" target="_blank">riskers</a>&#xFF0C;&#x4F7F;&#x7528;<a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">&#x77E5;&#x8BC6;&#x5171;&#x4EAB; &#x7F72;&#x540D;-&#x76F8;&#x540C;&#x65B9;&#x5F0F;&#x5171;&#x4EAB; 4.0&#x534F;&#x8BAE;</a>&#x53D1;&#x5E03; </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> &#x6B64;&#x9875;&#x9762;&#x4FEE;&#x8BA2;&#x4E8E;&#xFF1A; 2020-05-30 18:20:02 </span> </footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../" class="navigation navigation-prev " aria-label="Previous page: 关于">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="observer.html" class="navigation navigation-next " aria-label="Next page: observer">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"observable","level":"2.1","depth":1,"next":{"title":"observer","level":"2.2","depth":1,"path":"concepts/observer.md","ref":"./concepts/observer.md","articles":[]},"previous":{"title":"关于","level":"1.1","depth":1,"path":"README.md","ref":"./README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","-sharing","disqus","github-buttons","editlink","ga","-highlight","prism","bibtex-indexed-cite","anchor-navigation-ex","page-footer-ex","splitter","todo","copy-code-button","expandable-chapters-small","donate"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"ignore":["mermaid","eval-js"],"css":["prismjs/themes/prism-solarizedlight.css"]},"disqus":{"useIdentifier":false,"shortName":"rxjs-notebook"},"editlink":{"label":"Edit","multilingual":false,"base":"https://github.com/riskers/rxjs-note/blob/master"},"todo":{},"page-footer-ex":{"copyright":"By [riskers](https://github.com/riskers)，使用[知识共享 署名-相同方式共享 4.0协议](https://creativecommons.org/licenses/by-sa/4.0/)发布","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"此页面修订于："},"splitter":{},"search-pro":{"cutWordLib":"nodejieba","defineWord":["Gitbook Use"]},"donate":{"alipay":"https://riskers.github.io/rxjs-note/alipay.jpg","alipayText":"支付宝打赏","button":"赏","title":"","wechat":"https://riskers.github.io/rxjs-note/wechat.jpg","wechatText":"微信打赏"},"fontsettings":{"theme":"white","family":"sans","size":2},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"bibtex-indexed-cite":{"path":"/"},"github-buttons":{"buttons":[{"user":"riskers","repo":"rxjs-note","type":"star","size":"small","count":true}]},"expandable-chapters-small":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-131910384-1"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"riskers","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"bibCount":0,"variables":{},"title":"rxjs6+ 笔记","bib":[],"gitbook":"*"},"file":{"path":"concepts/observable.md","mtime":"2020-05-30T18:20:02.801Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-30T18:20:51.290Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-disqus/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-editlink/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
