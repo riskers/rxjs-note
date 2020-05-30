@@ -6,11 +6,11 @@
 
 > subject 在收到 $source 新消息时，会通知内部所有观察者(observerA 、observerB)
 
-<!-- 何时使用 Subject:
+何时使用 Subject:
 
 * 需要共享相同的 observable 执行。
 * 当需要决定观察者迟来时该怎么做，是否使用 ReplaySubject、BehaviorSubject？
-* 需要完全控制 next()、error() 和 completed() 方法。 -->
+* 需要完全控制 next()、error() 和 completed() 方法。
 
 ## Cold Observable 的问题
 
